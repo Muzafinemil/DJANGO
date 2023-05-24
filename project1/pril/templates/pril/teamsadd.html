@@ -1,0 +1,12 @@
+{% extends 'pril/nemain2.html' %}
+{% block content %}
+<div class="form_body">
+    <form action='{% url 'addteam'  %}' method='POST' class="form">
+        <h1 class="form_title">Форма создания</h1>
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="form_button">Добавить</button>
+        <input type=button value="Назад" onClick="javascript:history.go(-1);">
+    </form>
+</div>
+{% endblock %}

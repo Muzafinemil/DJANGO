@@ -1,0 +1,50 @@
+1.Получить все команды:
+teams = Team.objects.all()
+Out[2]: <QuerySet [<Team: FaZe>, <Team: zaVa>, <Team: V.G>, <Team: Rusland>, <Team: ForZe>]>
+
+
+2.Получить всех игроков :
+players = Player.objects.filter
+Out[4]: <QuerySet [<Player: hoholkiller>, <Player: hoholslayer>, <Player: vagnerocher>, <Player: vagnerenjoyer>, <Player: prigozhinfan>, <Player: bombukraine>, <Player: bombkiev>, <Player: muzikant>
+, <Player: Zloi>, <Player: Vernii>, <Player: Zetoc>, <Player: ZzzPLU>, <Player: Putinfan>, <Player: zxc>, <Player: qwe>, <Player: zcx>]>
+
+
+3.Получить все турниры :
+tournaments = Tournament.objects.all()
+Out[9]: <QuerySet [<Tournament: razbombikievcup>, <Tournament: killallazov>, <Tournament: ebatazovcup>, <Tournament: okupantcup>, <Tournament: zeldiacup>]>
+
+4.Получить все матчи :
+matches = Match.objects.all()
+Out[8]: <QuerySet [<Match: FaZe versus zaVa>, <Match: zaVa versus FaZe>, <Match: V.G versus ForZe>, <Match: Rusland versus FaZe>, <Match: ForZe versus Rusland>]>
+
+
+5.Получить турниры, которые проводились в определенной стране:
+tournaments = Tournament.objects.filter(location__contains='Название страны')
+In [10]: Tournament.objects.filter(location__contains="Russia")
+Out[10]: <QuerySet [<Tournament: razbombikievcup>, <Tournament: killallazov>, <Tournament: ebatazovcup>, <Tournament: okupantcup>, <Tournament: zeldiacup>]>
+
+6.Получить все команды, отсортированные по рейтингу:
+teams = Team.objects.order_by('-rating')
+In [11]: Team.objects.order_by("-rating")
+Out[11]: <QuerySet [<Team: ForZe>, <Team: Rusland>, <Team: V.G>, <Team: zaVa>, <Team: FaZe>]>
+
+
+7.Получить игроков определенной роли:
+players = Player.objects.filter(role='Название роли')
+Out[12]: <QuerySet [<Player: hoholkiller>, <Player: hoholslayer>, <Player: vagnerocher>, <Player: vagnerenjoyer>]>
+
+
+8.Получить последний добавленный турнир:
+latest_tournament = Tournament.objects.latest('start_date')
+Out[13]: <Tournament: zeldiacup>
+
+
+9.Получить первый матч в отсортированном по дате порядке:
+first_match = Match.objects.order_by('start_datetime').first()
+Out[14]: <Match: FaZe versus zaVa>
+
+
+10.Получить игроков старше 18 лет:
+players = Player.objects.filter(age__gt=18)
+Out[15]: <QuerySet [<Player: vagnerenjoyer>, <Player: bombukraine>, <Player: bombkiev>, <Player: muzikant>, <Player: Zloi>, <Player: Vernii>, <Player: Zetoc>, <Player: ZzzPLU>, <Player: Putinfan>, <
+Player: zxc>, <Player: qwe>, <Player: zcx>]>
